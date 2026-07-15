@@ -5,4 +5,8 @@ services:
     ports:
       - 54327:5432
     environments:
-      - 
+      - POSTGRES_PASSWORD=chaiyapat
+      - POSTGRES_USER=kokoku254808
+      - POSTGRES_DB=kokoku254808
+    volumes:
+      - /var/lib/postgresql/data
