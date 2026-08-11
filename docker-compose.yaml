@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: 69-s1-db
+    ports:
+      - "54327:5432"
+    environment:
+      - POSTGRES_PASSWORD=chaiyapat
+      - POSTGRES_USER=kokoku254808
+      - POSTGRES_DB=kokoku254808
+    volumes:
+      - /var/lib/postgresql/data
+
+  admin:
+    image: dpage/pgadmin4
+    container_name: 69-s1-admin
+    ports:
+      - "8081:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: chaiyapat@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: kokoku254808
+    depends_on:
+      - db
