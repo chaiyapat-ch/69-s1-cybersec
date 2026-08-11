@@ -5,11 +5,11 @@ services:
     ports:
       - "54327:5432"
     environment:
-      - POSTGRES_PASSWORD=chaiyapat
-      - POSTGRES_USER=kokoku254808
-      - POSTGRES_DB=kokoku254808
+      POSTGRES_DB: kokoku254808
+      POSTGRES_USER: kokoku254808
+      POSTGRES_PASSWORD: chaiyapat
     volumes:
-      - /var/lib/postgresql/data
+      - ./data/data:/var/lib/postgresql/data
 
   admin:
     image: dpage/pgadmin4
@@ -19,5 +19,22 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: chaiyapat@gmail.com
       PGADMIN_DEFAULT_PASSWORD: kokoku254808
-    depends_on:
-      - db
+    volumes:
+      - ./pgadmin_data:/var/lib/pgadmin
+
+  app:
+    image: prawee/strapi
+    container_name: 69-s1-app
+    ports:
+      - "9091:1337"
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: 69-s1-db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: kokoku254808
+      DATABASE_USERNAME: kokoku254808
+      DATABASE_PASSWORD: chaiyapat
+
+
+
+
