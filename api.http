@@ -1,0 +1,39 @@
+### Admin Login
+POST http://localhost:9091/admin/login
+Content-Type: application/json
+
+{
+    "email": "admin@example.com",
+    "password": "password123"
+}
+
+### Admin Register
+POST http://localhost:9091/api/auth/local/register
+Content-Type: application/json
+
+{
+    "username": "adminuser",
+    "email": "admin@example.com",
+    "password": "password123"
+}
+
+### Forgot Password (Admin & User)
+POST http://localhost:9091/api/auth/forgot-password
+Content-Type: application/json
+
+{
+    "email": "user@example.com"
+}
+
+### User Login (to get JWT)
+POST http://localhost:9091/api/auth/local
+Content-Type: application/json
+
+{
+    "identifier": "username",
+    "password": "password123"
+}
+
+### Profile (User) - requires Bearer token from User Login
+GET http://localhost:9091/api/users/me
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
